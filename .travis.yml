@@ -1,9 +1,15 @@
 language: python
 python:
-  - "2.7"
+- '2.7'
 env:
-  - DJANGO_SETTINGS_MODULE=library.settings.dev SECRET_KEY=deWoXPPcKD+4IzHD8auVe9MgHz8XhiMtqLbkXIT0lSXQ/0FgF45VaRx9PVIjUUF+
+- DJANGO_SETTINGS_MODULE=library.settings.dev SECRET_KEY=deWoXPPcKD+4IzHD8auVe9MgHz8XhiMtqLbkXIT0lSXQ/0FgF45VaRx9PVIjUUF+
 install:
-  - pip install -r requirements/test.txt
-# command to run tests
-script: coverage run manage.py test 
+- pip install -r requirements/test.txt
+script: coverage run manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: CmWaibLG2TxixYM6v1EYdlNsN6Kok2YAxjioFnKI3Bpopz/LzVjd/FVDnfdtg9Gtwa6kZk8aDrRVRhiX8Xb/9W9hI2bhWFK9Ui4A4q5L5d8LQXO7/I4/RKirIZoAw04AgkUdajB2Ll1a1K4d//hbKw5kbib2bDxOQWg5T8Pbhm3602VoWqfYg2M+xbn7pgaNQl3eM60ujUSISUJ2vAmczaPkrzbpMwj1FN8tGfLEMFZVjULBRTtc+pRZjwFajEipIbRsKbgCRHbGf3yRETjEYALFD1bjM0dSqI8NcvS02ohaDG2Q+E6KjIcfNHXSOLTG1HfZk32zDoUkVYjAbN8FYY46vz16aVCV4AWM/hcG2AkiW8rvgXnxmOGdoLeXAflrS6hiqHqw2wPgzKmLjmrqoxYpo+AW7oBIZwqSbYw99rh4kwXc2Ip91VugSqdpYAi8nVwNnfuZ7HKSPguTpc3ro+cZjixfS/weBIRr8shdbHiO7iclykbTI8pOhqfo3mp5T1L2nurV4z7W6LaaKe08ZJUvkepVop1OS0SyfsWgVFqOgwSv8ZGO9WkHGMrGz9shPKNkXbphRofqV3CBhhsa2rI8T9zL23LGtTTnzBDvHIMe5miKVCQbTqkFgYPuzW1iTlKeHWEUxZxROuiKYhuDagVhtLlAU6Fdmq+2jktW6LM=
+  app: andela-library
+  on:
+    repo: andela-earinde/Library-app
