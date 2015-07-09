@@ -6,6 +6,8 @@ env:
 install:
 - pip install -r requirements/test.txt
 script: coverage run manage.py test
+after_success:
+    DJANGO_SETTINGS_MODULE=library.settings.dev PYTHONPATH=. coveralls
 deploy:
   provider: heroku
   api_key:
